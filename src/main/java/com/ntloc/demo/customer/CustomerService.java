@@ -41,18 +41,18 @@ public class CustomerService {
     public void updateCustomer(Long id, String name, String email, String address) {
         Customer customer = customerRepository.findById(id).orElseThrow(() ->
                 new CustomerNotFoundException("Customer with id " + id + " doesn't found"));
-        if (Objects.nonNull(name) && !Objects.equals(customer.getName(), name)) {
+        if (Objects.nonNull(name)) {
 
             customer.setName(name);
         }
-        if (Objects.nonNull(email) && !Objects.equals(customer.getEmail(), email)) {
+        if (Objects.nonNull(email)) {
             Optional<Customer> customerByEmail = customerRepository.findByEmail(email);
             if (customerByEmail.isPresent()) {
                 throw new CustomerEmailUnavailableException("The email \"" + email + "\" unavailable to update");
             }
             customer.setEmail(email);
         }
-        if (Objects.nonNull(address) && !Objects.equals(customer.getAddress(), address)) {
+        if (Objects.nonNull(address)) {
 
             customer.setAddress(address);
         }
