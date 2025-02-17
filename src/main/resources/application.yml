@@ -5,7 +5,7 @@ spring:
     name: customer
   datasource:
     url: jdbc:postgresql://localhost:5432/customer
-    username: ntloc
+    username: hungphan13598
     password: password
   jpa:
     hibernate:
